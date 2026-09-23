@@ -9,7 +9,8 @@ const projects = [
     description: 'Developed an AI-powered recruitment platform for automated candidate screening. Built backend services using FastAPI and PostgreSQL. Implemented resume parsing, embeddings, semantic search, and AI-generated summaries. Integrated Supabase authentication and database services.',
     year: '2026',
     tags: ['FastAPI', 'LLM', 'Supabase', 'RAG'],
-    gradient: 'from-fuchsia-300 to-fuchsia-300'
+    gradient: 'from-fuchsia-300 to-fuchsia-300',
+    link: 'https://ai-candidate-ranking-system-psi.vercel.app/'
   },
   {
     icon: Sprout,
@@ -18,7 +19,8 @@ const projects = [
     description: 'Developed an AI-powered assistant for farmers. Implemented crop disease detection using computer vision. Integrated multilingual chatbot, satellite imagery analysis, weather forecasting, and market price prediction.',
     year: '2025',
     tags: ['Computer Vision', 'AI', 'Chatbot'],
-    gradient: 'from-fuchsia-300 to-fuchsia-300'
+    gradient: 'from-fuchsia-300 to-fuchsia-300',
+    link: 'https://farmer-centric-ai-dashboard-en9g8i3rzvn4qxepaenhfu.streamlit.app/'
   },
   {
     icon: Brain,
@@ -36,7 +38,8 @@ const projects = [
     description: 'Built a gesture-based virtual keyboard using OpenCV and Python. Implemented real-time hand tracking and gesture recognition.',
     year: '2023',
     tags: ['OpenCV', 'Python', 'Computer Vision'],
-    gradient: 'from-fuchsia-300 to-fuchsia-300'
+    gradient: 'from-fuchsia-300 to-fuchsia-300',
+    link: 'https://virtualkeyboard-rho.vercel.app/'
   },
   {
     icon: ShoppingCart,
@@ -54,7 +57,8 @@ const projects = [
     description: 'Developed a Netflix-like recommendation system using collaborative and content-based filtering. Built recommendation engine using Python, Pandas, and Scikit-learn.',
     year: '2023',
     tags: ['Machine Learning', 'Python', 'Scikit-learn'],
-    gradient: 'from-fuchsia-300 to-fuchsia-300'
+    gradient: 'from-fuchsia-300 to-fuchsia-300',
+    link: 'https://moviesphere-pi.vercel.app/'
   },
   {
     icon: BarChart3,
@@ -101,7 +105,7 @@ export default function Projects() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project, index) => {
+           {projects.map((project, index) => {
             const Icon = project.icon;
             return (
               <motion.div
@@ -111,7 +115,8 @@ export default function Projects() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 whileHover={{ y: -10, scale: 1.02 }}
-                className="bg-carbon-850/50 backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl hover:shadow-fuchsia-300/20 transition-all border border-fuchsia-300/20 group overflow-hidden relative hover:border-fuchsia-300/40"
+                onClick={() => project.link && window.open(project.link, '_blank')}
+                className={`bg-carbon-850/50 backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl hover:shadow-fuchsia-300/20 transition-all border border-fuchsia-300/20 group overflow-hidden relative hover:border-fuchsia-300/40 ${project.link ? 'cursor-pointer' : ''}`}
               >
                 {/* Animated gradient overlay */}
                 <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-fuchsia-300/20 to-fuchsia-300/20 rounded-full blur-3xl transform translate-x-20 -translate-y-20 group-hover:scale-150 transition-transform duration-500"></div>
