@@ -19,7 +19,7 @@ export default function Contact() {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute -top-24 -left-24 w-96 h-96 bg-lime-500/20 rounded-full blur-3xl"
+          className="absolute -top-24 -left-24 w-96 h-96 bg-violet-500/20 rounded-full blur-3xl"
         ></motion.div>
         <motion.div
           animate={{
@@ -31,7 +31,7 @@ export default function Contact() {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute -bottom-24 -right-24 w-96 h-96 bg-lime-500/20 rounded-full blur-3xl"
+          className="absolute -bottom-24 -right-24 w-96 h-96 bg-violet-500/20 rounded-full blur-3xl"
         ></motion.div>
       </div>
 
@@ -43,7 +43,7 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-lime-300 via-lime-400 to-lime-500 bg-clip-text text-transparent">
+          <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-violet-300 via-violet-400 to-violet-500 bg-clip-text text-transparent">
             Let's Connect
           </h2>
           <p className="text-xl text-slate-200/80 font-mono">
@@ -56,24 +56,24 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="bg-carbon-850/50 backdrop-blur-xl rounded-3xl p-8 border border-lime-500/30 shadow-2xl shadow-lime-500/10"
+          className="bg-carbon-850/50 backdrop-blur-xl rounded-3xl p-8 border border-violet-500/30 shadow-2xl shadow-violet-500/10"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <motion.a
               whileHover={{ scale: 1.05, x: 5 }}
               whileTap={{ scale: 0.95 }}
               href="mailto:anishtha33@gmail.com"
-              className="flex items-center gap-4 p-5 bg-carbon-800/50 backdrop-blur-lg rounded-2xl hover:bg-carbon-800/70 transition-colors group border border-lime-500/30 hover:border-lime-400/50"
+              className="flex items-center gap-4 p-5 bg-carbon-800/50 backdrop-blur-lg rounded-2xl hover:bg-carbon-800/70 transition-colors group border border-violet-500/30 hover:border-violet-400/50"
             >
               <motion.div
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.5 }}
-                className="w-14 h-14 rounded-xl bg-gradient-to-br from-lime-500/30 to-lime-500/30 flex items-center justify-center group-hover:from-lime-500/50 group-hover:to-lime-500/50 transition-all shadow-lg shadow-lime-500/30"
+                className="w-14 h-14 rounded-xl bg-gradient-to-br from-violet-500/30 to-violet-500/30 flex items-center justify-center group-hover:from-violet-500/50 group-hover:to-violet-500/50 transition-all shadow-lg shadow-violet-500/30"
               >
-                <Mail className="w-7 h-7 text-lime-300" />
+                <Mail className="w-7 h-7 text-violet-300" />
               </motion.div>
               <div>
-                <p className="text-sm text-lime-300/70 font-mono">Email</p>
+                <p className="text-sm text-violet-300/70 font-mono">Email</p>
                 <p className="text-slate-100 font-semibold">anishtha33@gmail.com</p>
               </div>
             </motion.a>
@@ -82,17 +82,17 @@ export default function Contact() {
               whileHover={{ scale: 1.05, x: 5 }}
               whileTap={{ scale: 0.95 }}
               href="tel:+918283050747"
-              className="flex items-center gap-4 p-5 bg-carbon-800/50 backdrop-blur-lg rounded-2xl hover:bg-carbon-800/70 transition-colors group border border-lime-500/30 hover:border-lime-400/50"
+              className="flex items-center gap-4 p-5 bg-carbon-800/50 backdrop-blur-lg rounded-2xl hover:bg-carbon-800/70 transition-colors group border border-violet-500/30 hover:border-violet-400/50"
             >
               <motion.div
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.5 }}
-                className="w-14 h-14 rounded-xl bg-gradient-to-br from-lime-500/30 to-lime-500/30 flex items-center justify-center group-hover:from-lime-500/50 group-hover:to-lime-500/50 transition-all shadow-lg shadow-lime-500/30"
+                className="w-14 h-14 rounded-xl bg-gradient-to-br from-violet-500/30 to-violet-500/30 flex items-center justify-center group-hover:from-violet-500/50 group-hover:to-violet-500/50 transition-all shadow-lg shadow-violet-500/30"
               >
-                <Phone className="w-7 h-7 text-lime-300" />
+                <Phone className="w-7 h-7 text-violet-300" />
               </motion.div>
               <div>
-                <p className="text-sm text-lime-300/70 font-mono">Phone</p>
+                <p className="text-sm text-violet-300/70 font-mono">Phone</p>
                 <p className="text-slate-100 font-semibold">+91 8283050747</p>
               </div>
             </motion.a>
@@ -103,17 +103,17 @@ export default function Contact() {
               href="https://linkedin.com/in/nishtha-arora-22aab626b"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 p-5 bg-carbon-800/50 backdrop-blur-lg rounded-2xl hover:bg-carbon-800/70 transition-colors group border border-lime-500/30 hover:border-lime-400/50"
+              className="flex items-center gap-4 p-5 bg-carbon-800/50 backdrop-blur-lg rounded-2xl hover:bg-carbon-800/70 transition-colors group border border-violet-500/30 hover:border-violet-400/50"
             >
               <motion.div
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.5 }}
-                className="w-14 h-14 rounded-xl bg-gradient-to-br from-lime-500/30 to-lime-500/30 flex items-center justify-center group-hover:from-lime-500/50 group-hover:to-lime-500/50 transition-all shadow-lg shadow-lime-500/30"
+                className="w-14 h-14 rounded-xl bg-gradient-to-br from-violet-500/30 to-violet-500/30 flex items-center justify-center group-hover:from-violet-500/50 group-hover:to-violet-500/50 transition-all shadow-lg shadow-violet-500/30"
               >
-                <Linkedin className="w-7 h-7 text-lime-300" />
+                <Linkedin className="w-7 h-7 text-violet-300" />
               </motion.div>
               <div>
-                <p className="text-sm text-lime-300/70 font-mono">LinkedIn</p>
+                <p className="text-sm text-violet-300/70 font-mono">LinkedIn</p>
                 <p className="text-slate-100 font-semibold">Nishtha Arora</p>
               </div>
             </motion.a>
@@ -124,17 +124,17 @@ export default function Contact() {
               href="https://github.com/Nishtha-Arora1977"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 p-5 bg-carbon-800/50 backdrop-blur-lg rounded-2xl hover:bg-carbon-800/70 transition-colors group border border-lime-500/30 hover:border-lime-400/50"
+              className="flex items-center gap-4 p-5 bg-carbon-800/50 backdrop-blur-lg rounded-2xl hover:bg-carbon-800/70 transition-colors group border border-violet-500/30 hover:border-violet-400/50"
             >
               <motion.div
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.5 }}
-                className="w-14 h-14 rounded-xl bg-gradient-to-br from-lime-500/30 to-lime-500/30 flex items-center justify-center group-hover:from-lime-500/50 group-hover:to-lime-500/50 transition-all shadow-lg shadow-lime-500/30"
+                className="w-14 h-14 rounded-xl bg-gradient-to-br from-violet-500/30 to-violet-500/30 flex items-center justify-center group-hover:from-violet-500/50 group-hover:to-violet-500/50 transition-all shadow-lg shadow-violet-500/30"
               >
-                <Github className="w-7 h-7 text-lime-300" />
+                <Github className="w-7 h-7 text-violet-300" />
               </motion.div>
               <div>
-                <p className="text-sm text-lime-300/70 font-mono">GitHub</p>
+                <p className="text-sm text-violet-300/70 font-mono">GitHub</p>
                 <p className="text-slate-100 font-semibold">Nishtha-Arora1977</p>
               </div>
             </motion.a>
@@ -145,7 +145,7 @@ export default function Contact() {
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.95 }}
               href="mailto:anishtha33@gmail.com"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-lime-400 to-lime-600 text-white rounded-full font-semibold hover:from-lime-300 hover:to-lime-500 transition-all shadow-xl shadow-lime-500/50"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-violet-400 to-violet-600 text-white rounded-full font-semibold hover:from-violet-300 hover:to-violet-500 transition-all shadow-xl shadow-violet-500/50"
             >
               <Send className="w-5 h-5" />
               <span>Send me a message</span>
@@ -158,7 +158,7 @@ export default function Contact() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="text-center mt-12 text-lime-300/70 font-mono"
+          className="text-center mt-12 text-violet-300/70 font-mono"
         >
           <p>{'// '}© 2026 Nishtha Arora. All rights reserved.</p>
         </motion.div>

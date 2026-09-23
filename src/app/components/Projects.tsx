@@ -9,7 +9,7 @@ const projects = [
     description: 'Developed an AI-powered recruitment platform for automated candidate screening. Built backend services using FastAPI and PostgreSQL. Implemented resume parsing, embeddings, semantic search, and AI-generated summaries. Integrated Supabase authentication and database services.',
     year: '2026',
     tags: ['FastAPI', 'LLM', 'Supabase', 'RAG'],
-    gradient: 'from-lime-400 to-lime-600'
+    gradient: 'from-violet-400 to-violet-600'
   },
   {
     icon: Sprout,
@@ -18,7 +18,7 @@ const projects = [
     description: 'Developed an AI-powered assistant for farmers. Implemented crop disease detection using computer vision. Integrated multilingual chatbot, satellite imagery analysis, weather forecasting, and market price prediction.',
     year: '2025',
     tags: ['Computer Vision', 'AI', 'Chatbot'],
-    gradient: 'from-lime-400 to-lime-600'
+    gradient: 'from-violet-400 to-violet-600'
   },
   {
     icon: Brain,
@@ -27,7 +27,7 @@ const projects = [
     description: 'Studied Deep Q-Learning models and analyzed attack and defense mechanisms. Performed research on reinforcement learning techniques in autonomous driving.',
     year: '2023',
     tags: ['Deep Learning', 'Reinforcement Learning', 'Research'],
-    gradient: 'from-lime-400 to-lime-600'
+    gradient: 'from-violet-400 to-violet-600'
   },
   {
     icon: Eye,
@@ -36,7 +36,7 @@ const projects = [
     description: 'Built a gesture-based virtual keyboard using OpenCV and Python. Implemented real-time hand tracking and gesture recognition.',
     year: '2023',
     tags: ['OpenCV', 'Python', 'Computer Vision'],
-    gradient: 'from-lime-400 to-lime-600'
+    gradient: 'from-violet-400 to-violet-600'
   },
   {
     icon: ShoppingCart,
@@ -45,7 +45,7 @@ const projects = [
     description: 'Developed interactive dashboard to track revenue, profit, and sales trends. Identified top-performing products and regional performance insights.',
     year: '2023',
     tags: ['Tableau', 'Data Visualization', 'Analytics'],
-    gradient: 'from-lime-400 to-lime-600'
+    gradient: 'from-violet-400 to-violet-600'
   },
   {
     icon: Film,
@@ -54,7 +54,7 @@ const projects = [
     description: 'Developed a Netflix-like recommendation system using collaborative and content-based filtering. Built recommendation engine using Python, Pandas, and Scikit-learn.',
     year: '2023',
     tags: ['Machine Learning', 'Python', 'Scikit-learn'],
-    gradient: 'from-lime-400 to-lime-600'
+    gradient: 'from-violet-400 to-violet-600'
   },
   {
     icon: BarChart3,
@@ -63,7 +63,7 @@ const projects = [
     description: 'Designed an interactive Tableau dashboard to analyze Netflix movies and TV shows. Visualized genre distribution, ratings, release trends, and country-wise content insights. Used charts, maps, and KPI cards to present data-driven storytelling effectively.',
     year: '2024',
     tags: ['Tableau', 'Data Visualization', 'Analytics'],
-    gradient: 'from-lime-400 to-lime-600'
+    gradient: 'from-violet-400 to-violet-600'
   },
   {
     icon: Globe,
@@ -72,7 +72,7 @@ const projects = [
     description: 'Developed a responsive personal portfolio website using modern web technologies. Showcased projects, technical skills, certifications, and social links interactively. Designed clean UI with animations and professional developer-focused layout.',
     year: '2026',
     tags: ['React', 'Frontend', 'UI/UX'],
-    gradient: 'from-lime-400 to-lime-600'
+    gradient: 'from-violet-400 to-violet-600'
   }
 ];
 
@@ -83,8 +83,8 @@ export default function Projects() {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f15_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f15_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
 
       {/* Gradient orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-lime-500/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-lime-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl"></div>
 
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
@@ -94,7 +94,7 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-lime-300 via-lime-400 to-lime-500 bg-clip-text text-transparent">
+          <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-violet-300 via-violet-400 to-violet-500 bg-clip-text text-transparent">
             Featured Projects
           </h2>
           <p className="text-xl text-slate-200/80 font-mono">{'/* '}Showcasing my technical expertise and creativity{' */'}</p>
@@ -111,13 +111,13 @@ export default function Projects() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 whileHover={{ y: -10, scale: 1.02 }}
-                className="bg-carbon-850/50 backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl hover:shadow-lime-500/20 transition-all border border-lime-500/20 group overflow-hidden relative hover:border-lime-400/40"
+                className="bg-carbon-850/50 backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl hover:shadow-violet-500/20 transition-all border border-violet-500/20 group overflow-hidden relative hover:border-violet-400/40"
               >
                 {/* Animated gradient overlay */}
-                <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-lime-500/20 to-lime-500/20 rounded-full blur-3xl transform translate-x-20 -translate-y-20 group-hover:scale-150 transition-transform duration-500"></div>
+                <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-violet-500/20 to-violet-500/20 rounded-full blur-3xl transform translate-x-20 -translate-y-20 group-hover:scale-150 transition-transform duration-500"></div>
 
                 {/* Binary code decoration */}
-                <div className="absolute top-4 right-4 text-lime-500/10 font-mono text-xs opacity-50 group-hover:opacity-100 transition-opacity">
+                <div className="absolute top-4 right-4 text-violet-500/10 font-mono text-xs opacity-50 group-hover:opacity-100 transition-opacity">
                   01010011
                 </div>
 
@@ -125,13 +125,13 @@ export default function Projects() {
                   <motion.div
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
-                    className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${project.gradient} flex items-center justify-center flex-shrink-0 shadow-lg shadow-lime-500/30`}
+                    className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${project.gradient} flex items-center justify-center flex-shrink-0 shadow-lg shadow-violet-500/30`}
                   >
                     <Icon className="w-7 h-7 text-white" />
                   </motion.div>
                   <div>
                     <h3 className="text-xl font-bold text-slate-100 mb-1">{project.title}</h3>
-                    <span className="text-sm text-lime-300/70 font-mono">{project.type}</span>
+                    <span className="text-sm text-violet-300/70 font-mono">{project.type}</span>
                   </div>
                 </div>
                 <p className="text-slate-100/80 mb-4 leading-relaxed relative z-10">{project.description}</p>
@@ -144,7 +144,7 @@ export default function Projects() {
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 + tagIndex * 0.05, duration: 0.3 }}
                       whileHover={{ scale: 1.15, y: -2 }}
-                      className="px-3 py-1.5 bg-carbon-800/50 backdrop-blur-sm border border-lime-500/30 rounded-full text-sm text-slate-100 shadow-md hover:shadow-lime-500/50 transition-all cursor-default hover:border-lime-400/50 font-mono"
+                      className="px-3 py-1.5 bg-carbon-800/50 backdrop-blur-sm border border-violet-500/30 rounded-full text-sm text-slate-100 shadow-md hover:shadow-violet-500/50 transition-all cursor-default hover:border-violet-400/50 font-mono"
                     >
                       {tag}
                     </motion.span>
