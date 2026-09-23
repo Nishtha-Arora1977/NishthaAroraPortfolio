@@ -49,7 +49,7 @@ export default function Experience() {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f15_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f15_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
 
       {/* Gradient glow */}
-      <div className="absolute inset-0 bg-gradient-to-r from-violet-500/5 via-violet-500/5 to-violet-500/5"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-300/5 via-fuchsia-300/5 to-fuchsia-300/5"></div>
 
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
@@ -59,7 +59,7 @@ export default function Experience() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-violet-300 via-violet-400 to-violet-500 bg-clip-text text-transparent">
+          <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-fuchsia-200 via-fuchsia-300 to-fuchsia-300 bg-clip-text text-transparent">
             Experience
           </h2>
           <p className="text-xl text-slate-200/80 font-mono">{'// '}Professional journey and achievements</p>
@@ -74,16 +74,16 @@ export default function Experience() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               whileHover={{ scale: 1.01, y: -5 }}
-              className="bg-carbon-850/50 backdrop-blur-xl rounded-3xl p-8 shadow-2xl hover:shadow-violet-500/20 transition-all border border-violet-500/30 relative overflow-hidden group"
+              className="bg-carbon-850/50 backdrop-blur-xl rounded-3xl p-8 shadow-2xl hover:shadow-fuchsia-300/20 transition-all border border-fuchsia-300/30 relative overflow-hidden group"
             >
               {/* Animated border glow */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-violet-500/20 via-violet-500/20 to-violet-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-fuchsia-300/20 via-fuchsia-300/20 to-fuchsia-300/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10">
                 <div className="flex items-start gap-4 mb-6">
                   <motion.div
                     whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.6 }}
-                    className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-400 via-violet-500 to-violet-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-violet-500/50"
+                    className="w-16 h-16 rounded-2xl bg-gradient-to-br from-fuchsia-300 via-fuchsia-300 to-fuchsia-300 flex items-center justify-center flex-shrink-0 shadow-lg shadow-fuchsia-300/50"
                   >
                     <Briefcase className="w-8 h-8 text-white" />
                   </motion.div>
@@ -92,15 +92,15 @@ export default function Experience() {
                       {exp.title}
                     </h3>
                     <div className="flex items-center gap-2 text-slate-200 mb-3">
-                      <Building2 className="w-5 h-5 text-violet-400" />
+                      <Building2 className="w-5 h-5 text-fuchsia-300" />
                       <span className="font-semibold text-lg">{exp.company}</span>
                     </div>
                     <div className="flex flex-wrap items-center gap-3">
-                      <div className="flex items-center gap-2 text-violet-300/80 bg-carbon-800/50 px-3 py-1.5 rounded-full border border-violet-500/20">
+                      <div className="flex items-center gap-2 text-fuchsia-200/80 bg-carbon-800/50 px-3 py-1.5 rounded-full border border-fuchsia-300/20">
                         <Calendar className="w-4 h-4" />
                         <span className="font-mono text-sm">{exp.period}</span>
                       </div>
-                      <span className="px-4 py-1.5 bg-gradient-to-r from-violet-500/20 to-violet-500/20 backdrop-blur-sm rounded-full text-sm font-semibold text-slate-100 border border-violet-400/30 shadow-sm shadow-violet-500/30">
+                      <span className="px-4 py-1.5 bg-gradient-to-r from-fuchsia-300/20 to-fuchsia-300/20 backdrop-blur-sm rounded-full text-sm font-semibold text-slate-100 border border-fuchsia-300/30 shadow-sm shadow-fuchsia-300/30">
                         {exp.duration}
                       </span>
                     </div>
@@ -110,8 +110,8 @@ export default function Experience() {
 
               <ul className="space-y-4 text-slate-100/90">
                 {exp.points.map((point, pointIndex) => {
-                  const colors = ['from-violet-400 to-violet-600', 'from-violet-500 to-violet-300', 'from-violet-300 to-violet-500', 'from-violet-600 to-violet-400'];
-                  const hoverColors = ['hover:bg-violet-500/10 hover:border-violet-500/30', 'hover:bg-violet-500/10 hover:border-violet-500/30', 'hover:bg-violet-500/10 hover:border-violet-500/30', 'hover:bg-violet-500/10 hover:border-violet-500/30'];
+                  const colors = ['from-fuchsia-300 to-fuchsia-300', 'from-fuchsia-300 to-fuchsia-200', 'from-fuchsia-200 to-fuchsia-300', 'from-fuchsia-300 to-fuchsia-300'];
+                  const hoverColors = ['hover:bg-fuchsia-300/10 hover:border-fuchsia-300/30', 'hover:bg-fuchsia-300/10 hover:border-fuchsia-300/30', 'hover:bg-fuchsia-300/10 hover:border-fuchsia-300/30', 'hover:bg-fuchsia-300/10 hover:border-fuchsia-300/30'];
                   const colorIdx = pointIndex % colors.length;
                   return (
                     <motion.li
@@ -128,7 +128,7 @@ export default function Experience() {
                         {point.highlight ? (
                           <>
                             {point.text.split(point.highlight)[0]}
-                            <span className="font-bold text-violet-400">{point.highlight}</span>
+                            <span className="font-bold text-fuchsia-300">{point.highlight}</span>
                             {point.text.split(point.highlight)[1]}
                           </>
                         ) : (
