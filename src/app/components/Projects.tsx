@@ -1,7 +1,19 @@
-import { Users, Sprout, Brain, Eye, ShoppingCart, Film, BarChart3, Globe } from 'lucide-react';
+import { Users, Sprout, Brain, Eye, ShoppingCart, Film, BarChart3, Globe, ExternalLink, Github, type LucideIcon } from 'lucide-react';
 import { motion } from 'motion/react';
 
-const projects = [
+type Project = {
+  icon: LucideIcon;
+  title: string;
+  type: string;
+  description: string;
+  year: string;
+  tags: string[];
+  gradient: string;
+  demoLink?: string;
+  githubLink?: string;
+};
+
+const projects: Project[] = [
   {
     icon: Users,
     title: 'AI Candidate Ranking System',
@@ -10,7 +22,8 @@ const projects = [
     year: '2026',
     tags: ['FastAPI', 'LLM', 'Supabase', 'RAG'],
     gradient: 'from-fuchsia-300 to-fuchsia-300',
-    link: 'https://ai-candidate-ranking-system-psi.vercel.app/'
+    demoLink: 'https://ai-candidate-ranking-system-psi.vercel.app/',
+    githubLink: 'https://github.com/Nishtha-Arora1977/ai-candidate-ranking-system'
   },
   {
     icon: Sprout,
@@ -20,7 +33,8 @@ const projects = [
     year: '2025',
     tags: ['Computer Vision', 'AI', 'Chatbot'],
     gradient: 'from-fuchsia-300 to-fuchsia-300',
-    link: 'https://farmer-centric-ai-dashboard-en9g8i3rzvn4qxepaenhfu.streamlit.app/'
+    demoLink: 'https://farmer-centric-ai-dashboard-en9g8i3rzvn4qxepaenhfu.streamlit.app/',
+    githubLink: 'https://github.com/Nishtha-Arora1977/farmer-centric-AI-dashboard'
   },
   {
     icon: Brain,
@@ -39,7 +53,8 @@ const projects = [
     year: '2023',
     tags: ['OpenCV', 'Python', 'Computer Vision'],
     gradient: 'from-fuchsia-300 to-fuchsia-300',
-    link: 'https://virtualkeyboard-rho.vercel.app/'
+    demoLink: 'https://virtualkeyboard-rho.vercel.app/',
+    githubLink: 'https://github.com/Nishtha-Arora1977/Virtualkeyboard_'
   },
   {
     icon: ShoppingCart,
@@ -58,7 +73,8 @@ const projects = [
     year: '2023',
     tags: ['Machine Learning', 'Python', 'Scikit-learn'],
     gradient: 'from-fuchsia-300 to-fuchsia-300',
-    link: 'https://moviesphere-pi.vercel.app/'
+    demoLink: 'https://moviesphere-pi.vercel.app/',
+    githubLink: 'https://github.com/Nishtha-Arora1977/Moviesphere'
   },
   {
     icon: BarChart3,
@@ -67,7 +83,8 @@ const projects = [
     description: 'Designed an interactive Tableau dashboard to analyze Netflix movies and TV shows. Visualized genre distribution, ratings, release trends, and country-wise content insights. Used charts, maps, and KPI cards to present data-driven storytelling effectively.',
     year: '2024',
     tags: ['Tableau', 'Data Visualization', 'Analytics'],
-    gradient: 'from-fuchsia-300 to-fuchsia-300'
+    gradient: 'from-fuchsia-300 to-fuchsia-300',
+    githubLink: 'https://github.com/Nishtha-Arora1977/netflix---dashboard-'
   },
   {
     icon: Globe,
@@ -76,7 +93,8 @@ const projects = [
     description: 'Developed a responsive personal portfolio website using modern web technologies. Showcased projects, technical skills, certifications, and social links interactively. Designed clean UI with animations and professional developer-focused layout.',
     year: '2026',
     tags: ['React', 'Frontend', 'UI/UX'],
-    gradient: 'from-fuchsia-300 to-fuchsia-300'
+    gradient: 'from-fuchsia-300 to-fuchsia-300',
+    githubLink: 'https://github.com/Nishtha-Arora1977/NishthaAroraPortfolio'
   }
 ];
 
@@ -115,8 +133,7 @@ export default function Projects() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 whileHover={{ y: -10, scale: 1.02 }}
-                onClick={() => project.link && window.open(project.link, '_blank')}
-                className={`bg-carbon-850/50 backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl hover:shadow-fuchsia-300/20 transition-all border border-fuchsia-300/20 group overflow-hidden relative hover:border-fuchsia-300/40 ${project.link ? 'cursor-pointer' : ''}`}
+                className={`bg-carbon-850/50 backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl hover:shadow-fuchsia-300/20 transition-all border border-fuchsia-300/20 group overflow-hidden relative hover:border-fuchsia-300/40`}
               >
                 {/* Animated gradient overlay */}
                 <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-fuchsia-300/20 to-fuchsia-300/20 rounded-full blur-3xl transform translate-x-20 -translate-y-20 group-hover:scale-150 transition-transform duration-500"></div>
@@ -140,7 +157,7 @@ export default function Projects() {
                   </div>
                 </div>
                 <p className="text-slate-100/80 mb-4 leading-relaxed relative z-10">{project.description}</p>
-                <div className="flex flex-wrap gap-2 relative z-10">
+                <div className="flex flex-wrap gap-2 relative z-10 mb-6">
                   {project.tags.map((tag, tagIndex) => (
                     <motion.span
                       key={tag}
@@ -155,6 +172,32 @@ export default function Projects() {
                     </motion.span>
                   ))}
                 </div>
+                {(project.demoLink || project.githubLink) && (
+                  <div className="flex flex-wrap gap-3 relative z-10">
+                    {project.demoLink && (
+                      <a
+                        href={project.demoLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-fuchsia-300 to-fuchsia-400 text-white rounded-full text-sm font-semibold hover:from-fuchsia-200 hover:to-fuchsia-300 transition-all shadow-lg shadow-fuchsia-300/30"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        <span>Live Demo</span>
+                      </a>
+                    )}
+                    {(project.githubLink) && (
+                      <a
+                        href={project.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-carbon-800/60 backdrop-blur-sm border border-fuchsia-300/40 text-slate-100 rounded-full text-sm font-semibold hover:border-fuchsia-300/70 hover:bg-carbon-800 transition-all"
+                      >
+                        <Github className="w-4 h-4" />
+                        <span>GitHub</span>
+                      </a>
+                    )}
+                  </div>
+                )}
               </motion.div>
             );
           })}
