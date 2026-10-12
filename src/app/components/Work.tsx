@@ -51,22 +51,6 @@ const projects: Project[] = [
     code: 'https://github.com/Nishtha-Arora1977/ai-candidate-ranking-system',
     featured: true,
   },
-  {
-    name: 'AI for Agriculture',
-    category: 'AI / Major project',
-    badge: 'Technical project',
-    image: '/ai-agriculture-preview.png',
-    description:
-      'An AI-powered digital assistant built for farmers. Combines crop disease detection, a multilingual chatbot, weather forecasting, and market price insights into one dashboard.',
-    features: [
-      'Crop disease detection',
-      'Multilingual chatbot assistant',
-      'Weather forecasting',
-      'Market price prediction',
-    ],
-    tech: ['Computer Vision', 'AI', 'Chatbot'],
-    code: 'https://github.com/Nishtha-Arora1977/farmer-centric-AI-dashboard',
-  },
 ];
 
 function BrowserImage({ src, alt }: { src: string; alt: string }) {
@@ -85,30 +69,6 @@ function BrowserImage({ src, alt }: { src: string; alt: string }) {
         height={1000}
         className="h-auto w-full"
       />
-    </div>
-  );
-}
-
-function ProjectPreview({ tone, label }: { tone: string; label: string }) {
-  return (
-    <div className={`relative overflow-hidden rounded-2xl border border-line ${tone}`}>
-      <div className="flex items-center gap-2 border-b border-line/70 bg-white/60 px-4 py-3">
-        <span className="h-2.5 w-2.5 rounded-full bg-white/90" />
-        <span className="h-2.5 w-2.5 rounded-full bg-white/70" />
-        <span className="h-2.5 w-2.5 rounded-full bg-white/50" />
-      </div>
-      <div className="space-y-3 p-5">
-        <div className="flex items-center justify-between">
-          <span className="font-serif text-sm text-ink">{label}</span>
-          <span className="h-2 w-12 rounded-full bg-black/10" />
-        </div>
-        <div className="h-24 rounded-xl bg-white/70" />
-        <div className="grid grid-cols-3 gap-3">
-          <div className="h-12 rounded-lg bg-white/60" />
-          <div className="h-12 rounded-lg bg-white/60" />
-          <div className="h-12 rounded-lg bg-white/60" />
-        </div>
-      </div>
     </div>
   );
 }
@@ -191,13 +151,8 @@ function FeaturedCard({ project, index }: { project: Project; index: number }) {
 
       <div className={`flex items-center bg-paper-2 p-6 sm:p-10 ${flip ? 'lg:order-1' : 'lg:order-2'}`}>
         <div className="w-full">
-          {project.image ? (
+          {project.image && (
             <BrowserImage src={project.image} alt={`Screenshot of the ${project.name} website`} />
-          ) : (
-            <ProjectPreview
-              tone="bg-gradient-to-br from-clay-soft via-paper-2 to-paper-3"
-              label={project.live ? new URL(project.live).hostname : project.name}
-            />
           )}
         </div>
       </div>
@@ -207,7 +162,6 @@ function FeaturedCard({ project, index }: { project: Project; index: number }) {
 
 export default function Work() {
   const featured = projects.filter((project) => project.featured);
-  const rest = projects.filter((project) => !project.featured);
 
   return (
     <section id="work" className="relative py-24 lg:py-32">
@@ -227,57 +181,6 @@ export default function Work() {
           {featured.map((project, index) => (
             <Reveal key={project.name} delay={index * 0.08}>
               <FeaturedCard project={project} index={index} />
-            </Reveal>
-          ))}
-        </div>
-
-        <div className="mt-8 grid gap-8 lg:grid-cols-2">
-          {rest.map((project, index) => (
-            <Reveal key={project.name} delay={index * 0.1} as="div">
-              <article className="group flex h-full flex-col rounded-3xl border border-line bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_30px_60px_-35px_rgba(26,25,22,0.4)]">
-                <div className="mb-6 w-full overflow-hidden rounded-2xl">
-                  {project.image ? (
-                    <BrowserImage
-                      src={project.image}
-                      alt={`Screenshot of the ${project.name} project`}
-                    />
-                  ) : (
-                    <ProjectPreview
-                      tone="bg-gradient-to-br from-paper-2 via-paper-3 to-clay-soft"
-                      label={project.live ? new URL(project.live).hostname : project.name}
-                    />
-                  )}
-                </div>
-
-                <div className="mb-3 flex items-center gap-3">
-                  <span className="rounded-full bg-clay-soft px-3 py-1 text-xs font-medium text-clay">
-                    {project.category}
-                  </span>
-                  <span className="text-xs text-ink-muted">{project.badge}</span>
-                </div>
-
-                <h3 className="font-serif text-2xl text-ink">{project.name}</h3>
-                <p className="mt-3 text-pretty leading-relaxed text-ink-muted">
-                  {project.description}
-                </p>
-
-                <ul className="mt-5 space-y-2">
-                  {project.features.map((item) => (
-                    <li key={item} className="flex items-center gap-3 text-sm text-ink-soft">
-                      <span className="h-1.5 w-1.5 rounded-full bg-clay" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-6">
-                  <TagList tech={project.tech} />
-                </div>
-
-                <div className="mt-8 pt-2">
-                  <ProjectLinks project={project} />
-                </div>
-              </article>
             </Reveal>
           ))}
         </div>
