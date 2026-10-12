@@ -10,6 +10,7 @@ type Project = {
   tech: string[];
   live?: string;
   code?: string;
+  image?: string;
   featured?: boolean;
 };
 
@@ -18,6 +19,7 @@ const projects: Project[] = [
     name: 'Aakaars',
     category: 'E-commerce Store',
     badge: 'Live store',
+    image: '/aakaars-preview.png',
     description:
       'A small-batch store for 3D-printed goods. Shoppers can browse products by category, view product details, add items to a cart, and send custom order inquiries — all in a clean, responsive storefront.',
     features: [
@@ -32,25 +34,10 @@ const projects: Project[] = [
     featured: true,
   },
   {
-    name: 'Nishtha Arora Portfolio',
-    category: 'Business Website',
-    badge: 'This site',
-    description:
-      'The website you are viewing now — a freelance portfolio designed to present services clearly and make it easy for a business to get in touch.',
-    features: [
-      'Single-page business layout',
-      'Services and work sections',
-      'Inquiry form with validation',
-      'Responsive navigation',
-    ],
-    tech: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
-    live: 'https://nishtha-arora-portfolio.vercel.app/',
-    code: 'https://github.com/Nishtha-Arora1977/NishthaAroraPortfolio',
-  },
-  {
     name: 'AI Candidate Ranking System',
     category: 'Full-stack / AI project',
     badge: 'Technical project',
+    image: '/ai-candidate-preview.png',
     description:
       'A full-stack platform that ranks candidates against a job description using semantic similarity and embeddings. Built as a technical project, alongside my website work.',
     features: [
@@ -62,8 +49,44 @@ const projects: Project[] = [
     tech: ['Python', 'FastAPI', 'Next.js', 'Supabase', 'pgvector'],
     live: 'https://ai-candidate-ranking-system-psi.vercel.app/',
     code: 'https://github.com/Nishtha-Arora1977/ai-candidate-ranking-system',
+    featured: true,
+  },
+  {
+    name: 'AI for Agriculture',
+    category: 'AI / Major project',
+    badge: 'Technical project',
+    description:
+      'An AI-powered digital assistant built for farmers. Combines crop disease detection, a multilingual chatbot, weather forecasting, and market price insights into one dashboard.',
+    features: [
+      'Crop disease detection',
+      'Multilingual chatbot assistant',
+      'Weather forecasting',
+      'Market price prediction',
+    ],
+    tech: ['Computer Vision', 'AI', 'Chatbot'],
+    code: 'https://github.com/Nishtha-Arora1977/farmer-centric-AI-dashboard',
   },
 ];
+
+function BrowserImage({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="overflow-hidden rounded-2xl border border-line bg-white shadow-[0_25px_50px_-30px_rgba(26,25,22,0.4)]">
+      <div className="flex items-center gap-2 border-b border-line bg-paper-2 px-4 py-3">
+        <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
+        <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
+        <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
+      </div>
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        width={1440}
+        height={1000}
+        className="h-auto w-full"
+      />
+    </div>
+  );
+}
 
 function ProjectPreview({ tone, label }: { tone: string; label: string }) {
   return (
@@ -133,8 +156,57 @@ function TagList({ tech }: { tech: string[] }) {
   );
 }
 
+function FeaturedCard({ project, index }: { project: Project; index: number }) {
+  const flip = index % 2 === 1;
+  return (
+    <article className="grid overflow-hidden rounded-3xl border border-line bg-white lg:grid-cols-2">
+      <div className={`flex flex-col justify-center p-8 sm:p-10 ${flip ? 'lg:order-2' : 'lg:order-1'}`}>
+        <div className="mb-4 flex items-center gap-3">
+          <span className="rounded-full bg-clay-soft px-3 py-1 text-xs font-medium text-clay">
+            {project.category}
+          </span>
+          <span className="text-xs text-ink-muted">{project.badge}</span>
+        </div>
+        <h3 className="font-serif text-3xl text-ink">{project.name}</h3>
+        <p className="mt-4 text-pretty leading-relaxed text-ink-muted">{project.description}</p>
+
+        <ul className="mt-6 space-y-2.5">
+          {project.features.map((item) => (
+            <li key={item} className="flex items-center gap-3 text-sm text-ink-soft">
+              <span className="h-1.5 w-1.5 rounded-full bg-clay" />
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-6">
+          <TagList tech={project.tech} />
+        </div>
+
+        <div className="mt-8">
+          <ProjectLinks project={project} />
+        </div>
+      </div>
+
+      <div className={`flex items-center bg-paper-2 p-6 sm:p-10 ${flip ? 'lg:order-1' : 'lg:order-2'}`}>
+        <div className="w-full">
+          {project.image ? (
+            <BrowserImage src={project.image} alt={`Screenshot of the ${project.name} website`} />
+          ) : (
+            <ProjectPreview
+              tone="bg-gradient-to-br from-clay-soft via-paper-2 to-paper-3"
+              label={project.live ? new URL(project.live).hostname : project.name}
+            />
+          )}
+        </div>
+      </div>
+    </article>
+  );
+}
+
 export default function Work() {
-  const [featured, ...rest] = projects;
+  const featured = projects.filter((project) => project.featured);
+  const rest = projects.filter((project) => !project.featured);
 
   return (
     <section id="work" className="relative py-24 lg:py-32">
@@ -150,45 +222,13 @@ export default function Work() {
           </p>
         </Reveal>
 
-        <Reveal className="mt-16">
-          <article className="grid overflow-hidden rounded-3xl border border-line bg-white lg:grid-cols-2">
-            <div className="order-2 flex flex-col justify-center p-8 sm:p-10 lg:order-1">
-              <div className="mb-4 flex items-center gap-3">
-                <span className="rounded-full bg-clay-soft px-3 py-1 text-xs font-medium text-clay">
-                  {featured.category}
-                </span>
-                <span className="text-xs text-ink-muted">{featured.badge}</span>
-              </div>
-              <h3 className="font-serif text-3xl text-ink">{featured.name}</h3>
-              <p className="mt-4 text-pretty leading-relaxed text-ink-muted">
-                {featured.description}
-              </p>
-
-              <ul className="mt-6 space-y-2.5">
-                {featured.features.map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm text-ink-soft">
-                    <span className="h-1.5 w-1.5 rounded-full bg-clay" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-6">
-                <TagList tech={featured.tech} />
-              </div>
-
-              <div className="mt-8">
-                <ProjectLinks project={featured} />
-              </div>
-            </div>
-
-            <div className="order-1 flex items-center bg-paper-2 p-6 sm:p-10 lg:order-2">
-              <div className="w-full">
-                <ProjectPreview tone="bg-gradient-to-br from-clay-soft via-paper-2 to-paper-3" label="aakaars.in" />
-              </div>
-            </div>
-          </article>
-        </Reveal>
+        <div className="mt-16 space-y-8">
+          {featured.map((project, index) => (
+            <Reveal key={project.name} delay={index * 0.08}>
+              <FeaturedCard project={project} index={index} />
+            </Reveal>
+          ))}
+        </div>
 
         <div className="mt-8 grid gap-8 lg:grid-cols-2">
           {rest.map((project, index) => (
@@ -196,11 +236,7 @@ export default function Work() {
               <article className="group flex h-full flex-col rounded-3xl border border-line bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_30px_60px_-35px_rgba(26,25,22,0.4)]">
                 <div className="mb-6 aspect-[16/10] w-full overflow-hidden rounded-2xl">
                   <ProjectPreview
-                    tone={
-                      project.category.includes('Business')
-                        ? 'bg-gradient-to-br from-paper-2 via-paper-3 to-clay-soft'
-                        : 'bg-gradient-to-br from-paper-3 via-paper-2 to-clay-soft/70'
-                    }
+                    tone="bg-gradient-to-br from-paper-2 via-paper-3 to-clay-soft"
                     label={project.live ? new URL(project.live).hostname : project.name}
                   />
                 </div>
