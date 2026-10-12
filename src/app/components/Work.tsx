@@ -14,6 +14,41 @@ type Project = {
   featured?: boolean;
 };
 
+const demos: Project[] = [
+  {
+    name: 'Maison Élise',
+    category: 'E-commerce Demo',
+    badge: 'Built for this portfolio',
+    image: '/boutique-preview.png',
+    description:
+      'A boutique website demo for a fashion brand. Products are grouped into categories with a clean product gallery, details, and pricing — and customers can order directly over WhatsApp.',
+    features: [
+      'Product gallery & categories',
+      'Product details and pricing',
+      'WhatsApp ordering flow',
+      'Elegant, responsive storefront',
+    ],
+    tech: ['Vite + React', 'Tailwind CSS', 'WhatsApp API'],
+    code: 'https://github.com/Nishtha-Arora1977/boutique-website',
+  },
+  {
+    name: 'Lumière Studio',
+    category: 'Business Website Demo',
+    badge: 'Built for this portfolio',
+    image: '/salon-preview.png',
+    description:
+      'A hair & beauty studio website demo. Visitors can browse services with transparent pricing, see the studio in a photo gallery, check location and opening hours, and send appointment requests via WhatsApp.',
+    features: [
+      'Services & transparent pricing',
+      'Photo gallery',
+      'Location & opening hours',
+      'WhatsApp appointment inquiries',
+    ],
+    tech: ['Vite + React', 'Tailwind CSS', 'WhatsApp API'],
+    code: 'https://github.com/Nishtha-Arora1977/salon-website',
+  },
+];
+
 const projects: Project[] = [
   {
     name: 'Aakaars',
@@ -160,6 +195,44 @@ function FeaturedCard({ project, index }: { project: Project; index: number }) {
   );
 }
 
+function DemoCard({ project }: { project: Project }) {
+  return (
+    <article className="flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-white">
+      <div className="p-6 pb-0 sm:p-8 sm:pb-0">
+        {project.image && (
+          <BrowserImage src={project.image} alt={`Screenshot of the ${project.name} website`} />
+        )}
+      </div>
+      <div className="flex flex-1 flex-col p-6 sm:p-8">
+        <div className="mb-3 flex items-center gap-3">
+          <span className="rounded-full bg-clay-soft px-3 py-1 text-xs font-medium text-clay">
+            {project.category}
+          </span>
+        </div>
+        <h3 className="font-serif text-2xl text-ink">{project.name}</h3>
+        <p className="mt-3 text-pretty leading-relaxed text-ink-muted">{project.description}</p>
+
+        <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+          {project.features.map((item) => (
+            <li key={item} className="flex items-center gap-2.5 text-sm text-ink-soft">
+              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-clay" />
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-6">
+          <TagList tech={project.tech} />
+        </div>
+
+        <div className="mt-7">
+          <ProjectLinks project={project} />
+        </div>
+      </div>
+    </article>
+  );
+}
+
 export default function Work() {
   const featured = projects.filter((project) => project.featured);
 
@@ -184,6 +257,24 @@ export default function Work() {
             </Reveal>
           ))}
         </div>
+
+        <Reveal className="mt-20">
+          <div className="mb-8 max-w-2xl">
+            <h3 className="font-serif text-2xl text-ink sm:text-3xl">Client-style website demos</h3>
+            <p className="mt-3 text-pretty leading-relaxed text-ink-muted">
+              Two demo websites showing the kind of project I build for a business — a boutique
+              and a salon, each with their own brand, layout, and WhatsApp flow. Sample details
+              are easy to swap for your business&apos;s, making these quick to launch.
+            </p>
+          </div>
+          <div className="grid gap-8 lg:grid-cols-2">
+            {demos.map((demo) => (
+              <Reveal key={demo.name} delay={0.06}>
+                <DemoCard project={demo} />
+              </Reveal>
+            ))}
+          </div>
+        </Reveal>
 
         <Reveal delay={0.1} className="mt-10 text-center">
           <a
