@@ -18,23 +18,25 @@ const demos: Project[] = [
   {
     name: 'Maison Élise',
     category: 'E-commerce Demo',
-    badge: 'Built for this portfolio',
+    badge: 'Live demo',
     image: '/boutique-preview.png',
     description:
-      'A boutique website demo for a fashion brand. Products are grouped into categories with a clean product gallery, details, and pricing — and customers can order directly over WhatsApp.',
+      'A boutique website demo for a fashion brand. Products are grouped into categories with a clean product gallery, details, and pricing — and customers can order directly over WhatsApp. Finished in a black editorial theme with a sidebar layout.',
     features: [
       'Product gallery & categories',
+      'Western, ethnic & accessory edits',
       'Product details and pricing',
       'WhatsApp ordering flow',
       'Elegant, responsive storefront',
     ],
     tech: ['Vite + React', 'Tailwind CSS', 'WhatsApp API'],
+    live: 'https://boutique-website-omega.vercel.app/',
     code: 'https://github.com/Nishtha-Arora1977/boutique-website',
   },
   {
     name: 'Lumière Studio',
     category: 'Business Website Demo',
-    badge: 'Built for this portfolio',
+    badge: 'Live demo',
     image: '/salon-preview.png',
     description:
       'A hair & beauty studio website demo. Visitors can browse services with transparent pricing, see the studio in a photo gallery, check location and opening hours, and send appointment requests via WhatsApp.',
@@ -45,6 +47,7 @@ const demos: Project[] = [
       'WhatsApp appointment inquiries',
     ],
     tech: ['Vite + React', 'Tailwind CSS', 'WhatsApp API'],
+    live: 'https://salon-website-kohl-six.vercel.app/',
     code: 'https://github.com/Nishtha-Arora1977/salon-website',
   },
 ];
