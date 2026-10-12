@@ -55,6 +55,7 @@ const projects: Project[] = [
     name: 'AI for Agriculture',
     category: 'AI / Major project',
     badge: 'Technical project',
+    image: '/ai-agriculture-preview.png',
     description:
       'An AI-powered digital assistant built for farmers. Combines crop disease detection, a multilingual chatbot, weather forecasting, and market price insights into one dashboard.',
     features: [
@@ -234,11 +235,18 @@ export default function Work() {
           {rest.map((project, index) => (
             <Reveal key={project.name} delay={index * 0.1} as="div">
               <article className="group flex h-full flex-col rounded-3xl border border-line bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_30px_60px_-35px_rgba(26,25,22,0.4)]">
-                <div className="mb-6 aspect-[16/10] w-full overflow-hidden rounded-2xl">
-                  <ProjectPreview
-                    tone="bg-gradient-to-br from-paper-2 via-paper-3 to-clay-soft"
-                    label={project.live ? new URL(project.live).hostname : project.name}
-                  />
+                <div className="mb-6 w-full overflow-hidden rounded-2xl">
+                  {project.image ? (
+                    <BrowserImage
+                      src={project.image}
+                      alt={`Screenshot of the ${project.name} project`}
+                    />
+                  ) : (
+                    <ProjectPreview
+                      tone="bg-gradient-to-br from-paper-2 via-paper-3 to-clay-soft"
+                      label={project.live ? new URL(project.live).hostname : project.name}
+                    />
+                  )}
                 </div>
 
                 <div className="mb-3 flex items-center gap-3">

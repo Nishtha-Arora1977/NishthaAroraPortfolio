@@ -4,8 +4,8 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 
 const links = [
   { label: 'Home', href: '#home' },
-  { label: 'Services', href: '#services' },
   { label: 'Work', href: '#work' },
+  { label: 'Services', href: '#services' },
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ];
