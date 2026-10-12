@@ -1,167 +1,260 @@
-import { Mail, Phone, Github, Linkedin, Send } from 'lucide-react';
-import { motion } from 'motion/react';
+import { useState, type FormEvent } from 'react';
+import { ArrowRight, Github, Linkedin, Mail, MapPin } from 'lucide-react';
+import Reveal from './Reveal';
+
+const EMAIL = 'anishtha33@gmail.com';
+const LINKEDIN = 'https://linkedin.com/in/nishtha-arora-22aab626b';
+const GITHUB = 'https://github.com/Nishtha-Arora1977';
+
+const projectTypes = [
+  'Business website',
+  'E-commerce store',
+  'Redesign of an existing site',
+  'Not sure yet — let’s talk',
+];
+
+type Errors = Partial<Record<'name' | 'email' | 'projectType' | 'message', string>>;
+
+const inputClass =
+  'w-full rounded-xl border border-line bg-white px-4 py-3 text-ink placeholder:text-ink-muted/60 transition-colors focus:border-clay focus:outline-none';
 
 export default function Contact() {
+  const [values, setValues] = useState({
+    name: '',
+    email: '',
+    projectType: '',
+    message: '',
+  });
+  const [errors, setErrors] = useState<Errors>({});
+  const [sent, setSent] = useState(false);
+
+  const update = (field: keyof typeof values, value: string) => {
+    setValues((prev) => ({ ...prev, [field]: value }));
+    setErrors((prev) => ({ ...prev, [field]: undefined }));
+  };
+
+  const validate = (): Errors => {
+    const next: Errors = {};
+    if (!values.name.trim()) next.name = 'Please enter your name.';
+    if (!values.email.trim()) next.email = 'Please enter your email address.';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim()))
+      next.email = 'Please enter a valid email address.';
+    if (!values.projectType) next.projectType = 'Please choose a project type.';
+    if (values.message.trim().length < 10)
+      next.message = 'Please add a little more detail (at least 10 characters).';
+    return next;
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const nextErrors = validate();
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) {
+      setSent(false);
+      return;
+    }
+
+    const subject = `New project inquiry — ${values.projectType}`;
+    const body = [
+      `Name: ${values.name}`,
+      `Email: ${values.email}`,
+      `Project type: ${values.projectType}`,
+      '',
+      'Project details:',
+      values.message,
+    ].join('\n');
+
+    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+    setSent(true);
+  };
+
   return (
-    <section id="contact" className="py-20 px-6 bg-gradient-to-br from-carbon-950 via-carbon-950 to-carbon-950 relative overflow-hidden">
-      {/* Tech grid background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f15_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f15_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+    <section id="contact" className="relative py-24 lg:py-32">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="overflow-hidden rounded-[2rem] bg-ink px-6 py-14 sm:px-12 lg:px-16 lg:py-20">
+          <div className="grid gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+            <Reveal>
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-clay-soft">
+                Contact
+              </p>
+              <h2 className="text-balance font-serif text-4xl text-paper sm:text-5xl">
+                Have a Project in Mind?
+              </h2>
+              <p className="mt-6 text-pretty text-lg leading-relaxed text-paper/70">
+                Whether you&apos;re launching a new business or bringing your store online, let&apos;s
+                discuss how we can build the right website for you.
+              </p>
 
-      {/* Animated background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.3, 0.2],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute -top-24 -left-24 w-96 h-96 bg-fuchsia-300/20 rounded-full blur-3xl"
-        ></motion.div>
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.15, 0.25, 0.15],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute -bottom-24 -right-24 w-96 h-96 bg-fuchsia-300/20 rounded-full blur-3xl"
-        ></motion.div>
-      </div>
+              <ul className="mt-10 space-y-4">
+                <li>
+                  <a
+                    href={`mailto:${EMAIL}`}
+                    className="group flex items-center gap-4 text-paper transition-colors hover:text-clay-soft"
+                  >
+                    <span className="flex h-11 w-11 items-center justify-center rounded-full border border-paper/15 text-clay-soft transition-colors group-hover:border-clay-soft">
+                      <Mail className="h-5 w-5" />
+                    </span>
+                    <span className="text-sm">{EMAIL}</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={LINKEDIN}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-4 text-paper transition-colors hover:text-clay-soft"
+                  >
+                    <span className="flex h-11 w-11 items-center justify-center rounded-full border border-paper/15 text-clay-soft transition-colors group-hover:border-clay-soft">
+                      <Linkedin className="h-5 w-5" />
+                    </span>
+                    <span className="text-sm">LinkedIn</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={GITHUB}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-4 text-paper transition-colors hover:text-clay-soft"
+                  >
+                    <span className="flex h-11 w-11 items-center justify-center rounded-full border border-paper/15 text-clay-soft transition-colors group-hover:border-clay-soft">
+                      <Github className="h-5 w-5" />
+                    </span>
+                    <span className="text-sm">GitHub</span>
+                  </a>
+                </li>
+                <li className="flex items-center gap-4 text-paper/70">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full border border-paper/15 text-clay-soft">
+                    <MapPin className="h-5 w-5" />
+                  </span>
+                  <span className="text-sm">India · available for remote projects</span>
+                </li>
+              </ul>
+            </Reveal>
 
-      <div className="max-w-4xl mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-fuchsia-200 via-fuchsia-300 to-fuchsia-300 bg-clip-text text-transparent">
-            Let's Connect
-          </h2>
-          <p className="text-xl text-slate-200/80 font-mono">
-            {'> '}I'm always open to discussing new opportunities and collaborations
-          </p>
-        </motion.div>
+            <Reveal delay={0.1}>
+              <form onSubmit={handleSubmit} noValidate className="space-y-5">
+                <div>
+                  <label htmlFor="name" className="mb-2 block text-sm text-paper/80">
+                    Name
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    autoComplete="name"
+                    value={values.name}
+                    onChange={(event) => update('name', event.target.value)}
+                    aria-invalid={Boolean(errors.name)}
+                    aria-describedby={errors.name ? 'name-error' : undefined}
+                    className={inputClass}
+                    placeholder="Your name"
+                  />
+                  {errors.name && (
+                    <p id="name-error" className="mt-2 text-sm text-[#f0a48f]">
+                      {errors.name}
+                    </p>
+                  )}
+                </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="bg-carbon-850/50 backdrop-blur-xl rounded-3xl p-8 border border-fuchsia-300/30 shadow-2xl shadow-fuchsia-300/10"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <motion.a
-              whileHover={{ scale: 1.05, x: 5 }}
-              whileTap={{ scale: 0.95 }}
-              href="mailto:anishtha33@gmail.com"
-              className="flex items-center gap-4 p-5 bg-carbon-800/50 backdrop-blur-lg rounded-2xl hover:bg-carbon-800/70 transition-colors group border border-fuchsia-300/30 hover:border-fuchsia-300/50"
-            >
-              <motion.div
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.5 }}
-                className="w-14 h-14 rounded-xl bg-gradient-to-br from-fuchsia-300/30 to-fuchsia-300/30 flex items-center justify-center group-hover:from-fuchsia-300/50 group-hover:to-fuchsia-300/50 transition-all shadow-lg shadow-fuchsia-300/30"
-              >
-                <Mail className="w-7 h-7 text-fuchsia-200" />
-              </motion.div>
-              <div>
-                <p className="text-sm text-fuchsia-200/70 font-mono">Email</p>
-                <p className="text-slate-100 font-semibold">anishtha33@gmail.com</p>
-              </div>
-            </motion.a>
+                <div>
+                  <label htmlFor="email" className="mb-2 block text-sm text-paper/80">
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    value={values.email}
+                    onChange={(event) => update('email', event.target.value)}
+                    aria-invalid={Boolean(errors.email)}
+                    aria-describedby={errors.email ? 'email-error' : undefined}
+                    className={inputClass}
+                    placeholder="you@example.com"
+                  />
+                  {errors.email && (
+                    <p id="email-error" className="mt-2 text-sm text-[#f0a48f]">
+                      {errors.email}
+                    </p>
+                  )}
+                </div>
 
-            <motion.a
-              whileHover={{ scale: 1.05, x: 5 }}
-              whileTap={{ scale: 0.95 }}
-              href="tel:+918283050747"
-              className="flex items-center gap-4 p-5 bg-carbon-800/50 backdrop-blur-lg rounded-2xl hover:bg-carbon-800/70 transition-colors group border border-fuchsia-300/30 hover:border-fuchsia-300/50"
-            >
-              <motion.div
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.5 }}
-                className="w-14 h-14 rounded-xl bg-gradient-to-br from-fuchsia-300/30 to-fuchsia-300/30 flex items-center justify-center group-hover:from-fuchsia-300/50 group-hover:to-fuchsia-300/50 transition-all shadow-lg shadow-fuchsia-300/30"
-              >
-                <Phone className="w-7 h-7 text-fuchsia-200" />
-              </motion.div>
-              <div>
-                <p className="text-sm text-fuchsia-200/70 font-mono">Phone</p>
-                <p className="text-slate-100 font-semibold">+91 8283050747</p>
-              </div>
-            </motion.a>
+                <div>
+                  <label htmlFor="projectType" className="mb-2 block text-sm text-paper/80">
+                    Business or project type
+                  </label>
+                  <select
+                    id="projectType"
+                    name="projectType"
+                    value={values.projectType}
+                    onChange={(event) => update('projectType', event.target.value)}
+                    aria-invalid={Boolean(errors.projectType)}
+                    aria-describedby={errors.projectType ? 'projectType-error' : undefined}
+                    className={inputClass}
+                  >
+                    <option value="" disabled>
+                      Select an option
+                    </option>
+                    {projectTypes.map((type) => (
+                      <option key={type} value={type}>
+                        {type}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.projectType && (
+                    <p id="projectType-error" className="mt-2 text-sm text-[#f0a48f]">
+                      {errors.projectType}
+                    </p>
+                  )}
+                </div>
 
-            <motion.a
-              whileHover={{ scale: 1.05, x: 5 }}
-              whileTap={{ scale: 0.95 }}
-              href="https://linkedin.com/in/nishtha-arora-22aab626b"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-4 p-5 bg-carbon-800/50 backdrop-blur-lg rounded-2xl hover:bg-carbon-800/70 transition-colors group border border-fuchsia-300/30 hover:border-fuchsia-300/50"
-            >
-              <motion.div
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.5 }}
-                className="w-14 h-14 rounded-xl bg-gradient-to-br from-fuchsia-300/30 to-fuchsia-300/30 flex items-center justify-center group-hover:from-fuchsia-300/50 group-hover:to-fuchsia-300/50 transition-all shadow-lg shadow-fuchsia-300/30"
-              >
-                <Linkedin className="w-7 h-7 text-fuchsia-200" />
-              </motion.div>
-              <div>
-                <p className="text-sm text-fuchsia-200/70 font-mono">LinkedIn</p>
-                <p className="text-slate-100 font-semibold">Nishtha Arora</p>
-              </div>
-            </motion.a>
+                <div>
+                  <label htmlFor="message" className="mb-2 block text-sm text-paper/80">
+                    Brief project description
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    value={values.message}
+                    onChange={(event) => update('message', event.target.value)}
+                    aria-invalid={Boolean(errors.message)}
+                    aria-describedby={errors.message ? 'message-error' : undefined}
+                    className={`${inputClass} resize-none`}
+                    placeholder="Tell me a little about your business and what you need."
+                  />
+                  {errors.message && (
+                    <p id="message-error" className="mt-2 text-sm text-[#f0a48f]">
+                      {errors.message}
+                    </p>
+                  )}
+                </div>
 
-            <motion.a
-              whileHover={{ scale: 1.05, x: 5 }}
-              whileTap={{ scale: 0.95 }}
-              href="https://github.com/Nishtha-Arora1977"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-4 p-5 bg-carbon-800/50 backdrop-blur-lg rounded-2xl hover:bg-carbon-800/70 transition-colors group border border-fuchsia-300/30 hover:border-fuchsia-300/50"
-            >
-              <motion.div
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.5 }}
-                className="w-14 h-14 rounded-xl bg-gradient-to-br from-fuchsia-300/30 to-fuchsia-300/30 flex items-center justify-center group-hover:from-fuchsia-300/50 group-hover:to-fuchsia-300/50 transition-all shadow-lg shadow-fuchsia-300/30"
-              >
-                <Github className="w-7 h-7 text-fuchsia-200" />
-              </motion.div>
-              <div>
-                <p className="text-sm text-fuchsia-200/70 font-mono">GitHub</p>
-                <p className="text-slate-100 font-semibold">Nishtha-Arora1977</p>
-              </div>
-            </motion.a>
+                <button
+                  type="submit"
+                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-clay px-7 py-3.5 text-sm font-medium text-white transition-colors hover:bg-clay-strong sm:w-auto"
+                >
+                  Send inquiry
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </button>
+
+                <p role="status" className="text-sm text-paper/60">
+                  {sent
+                    ? 'Your email app should now open with the details filled in. If it doesn’t, email me directly at '
+                    : 'This form opens your email app with the details filled in — no data is stored on this site.'}
+                  {sent && (
+                    <a href={`mailto:${EMAIL}`} className="text-clay-soft underline">
+                      {EMAIL}
+                    </a>
+                  )}
+                </p>
+              </form>
+            </Reveal>
           </div>
-
-          <div className="text-center">
-            <motion.a
-              whileHover={{ scale: 1.05, y: -3 }}
-              whileTap={{ scale: 0.95 }}
-              href="mailto:anishtha33@gmail.com"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-fuchsia-300 to-fuchsia-300 text-white rounded-full font-semibold hover:from-fuchsia-200 hover:to-fuchsia-300 transition-all shadow-xl shadow-fuchsia-300/50"
-            >
-              <Send className="w-5 h-5" />
-              <span>Send me a message</span>
-            </motion.a>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="text-center mt-12 text-fuchsia-200/70 font-mono"
-        >
-          <p>{'// '}© 2026 Nishtha Arora. All rights reserved.</p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
